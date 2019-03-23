@@ -9,7 +9,7 @@ public class InfestationObject : MonoBehaviour
     [SerializeField] Color cleanColor;
     [SerializeField] Color infestedColor;
 
-    float currentInfestation = 0;
+    float currentInfestation = 100;
 
     Renderer rend;
 
@@ -22,7 +22,7 @@ public class InfestationObject : MonoBehaviour
     void Update()
     {
         ColorByInfestation();
-        // TODO spawn bug particles based on infestation
+        Debug.Log(currentInfestation);
     }
 
     public void AddInfestation(float amount)

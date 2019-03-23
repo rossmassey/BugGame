@@ -105,3 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d9260d59ef5c749ba7af285d65b627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxInfestation: 100
+  cleanColor: {r: 0.5419654, g: 1, b: 0.514151, a: 0}
+  infestedColor: {r: 1, g: 0.21226418, b: 0.21226418, a: 0}
