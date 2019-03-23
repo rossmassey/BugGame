@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             if (weaponEffectActive)
             {
-                Destroy(weaponEffect); // TODO figure out why clones are not being destroyed
+                Destroy(weaponEffect.transform.gameObject);
                 weaponEffectActive = false;
             }
         }

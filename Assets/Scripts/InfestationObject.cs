@@ -22,7 +22,6 @@ public class InfestationObject : MonoBehaviour
     void Update()
     {
         ColorByInfestation();
-        Debug.Log(currentInfestation);
     }
 
     public void AddInfestation(float amount)
