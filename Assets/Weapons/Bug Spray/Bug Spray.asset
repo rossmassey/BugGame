@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Bug Spray
   weaponDamage: 10
-  timeBetweenAttack: 2
+  timeBetweenAttack: 0.2
   weaponEffect: {fileID: 7575968249104033151, guid: 37a077cc105be4b45b965a93a262329f,
     type: 3}
