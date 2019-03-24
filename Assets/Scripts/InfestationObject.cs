@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Script for managing infestation objects, objects that can "carry" an infestation which can be removed by the player
+ * 
+ * Handles particle system and infestation level
+ * 
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,24 +13,30 @@ public class InfestationObject : MonoBehaviour
 {
     [Header("Infestation")]
     [SerializeField] float maxInfestation = 100f;
-    [SerializeField] Color cleanColor;
-    [SerializeField] Color infestedColor;
+    [SerializeField] float passiveInfestationDelay = 0.5f;
+    [SerializeField] float passiveInfestationAmount = 3f;
+
+    [Header("Infestation visual")]
+    [SerializeField] Color cleanColor = Color.cyan;
+    [SerializeField] Color infestedColor = Color.red;
 
     [Header("Bug Particles")]
     [SerializeField] ParticleSystem bugEffectToUse;
     [SerializeField] float maxBugParticles = 50f;
-    // TODO make bugs bounce more
 
     float currentInfestation = 100;
+    float timeSinceLastPassiveInfest = 0;
     Renderer rend;
 
     ParticleSystem bugEffect;
     ParticleSystem.MainModule bugEffectSettings;
     bool bugEffectPlaying = true;
 
+    int bugCount = 0;
 
     void Start()
     {
+        currentInfestation = maxInfestation;
         rend = GetComponent<Renderer>();
         bugEffect = Instantiate(bugEffectToUse, transform);
         bugEffectSettings = bugEffect.main;
@@ -32,8 +44,40 @@ public class InfestationObject : MonoBehaviour
 
     void Update()
     {
-        ColorByInfestation();
         ManageParticles();
+        UpdateBugCount();
+        PassiveInfest();
+        ColorByInfestation();
+    }
+
+    private void PassiveInfest()
+    {
+        timeSinceLastPassiveInfest += Time.deltaTime;
+        if (bugEffectPlaying)
+        {
+            if (timeSinceLastPassiveInfest >= passiveInfestationDelay)
+            {
+                AddInfestation(passiveInfestationAmount);
+                timeSinceLastPassiveInfest = 0;
+            }
+        }
+    }
+
+    public int GetBugCount()
+    {
+        return bugCount;
+    }
+
+    private void UpdateBugCount()
+    {
+        if (bugEffect != null)
+        {
+            bugCount = bugEffect.particleCount;
+        }
+        else
+        {
+            bugCount = 0;
+        }
     }
 
     private void ManageParticles()
@@ -45,16 +89,18 @@ public class InfestationObject : MonoBehaviour
         
         if (bugEffectPlaying && currentInfestation == 0)
         {
-            // TODO figure out why some bugs are left over
-            bugEffect.Stop();
+            //bugEffect.Stop();
+            Destroy(bugEffect);
             bugEffectPlaying = false;
         }
         
+        /* 
         if (!bugEffectPlaying && currentInfestation > 1)
         {
             bugEffect.Play();
             bugEffectPlaying = true;
         }
+        */
     }
 
     public void AddInfestation(float amount)

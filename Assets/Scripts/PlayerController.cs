@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Script for managing player interaction
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

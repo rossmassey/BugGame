@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Object that stores all the data for weapons (eg. bug spray)
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
