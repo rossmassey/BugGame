@@ -1,7 +1,4 @@
-# BugGame (working title)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 ![Picture of title](Assets/Resources/Images/title.png "Bug Game")
 
@@ -42,9 +39,3 @@ Make sure to import TextMesh Pro resources
 Hold your mouse over the red furniture to get rid of the bugs. When there are no more bugs you win (just tell yourself that).
 
 WASD moves the camera, Q/E zoomes in and out.
-=======
-This is a game made in Unity where the goal is to exterminate all the bugs!
->>>>>>> parent of 0312665... Cleaned up a lot of things, updated README, added some 3d models
-=======
-This is a game made in Unity where the goal is to exterminate all the bugs!
->>>>>>> parent of 0312665... Cleaned up a lot of things, updated README, added some 3d models
